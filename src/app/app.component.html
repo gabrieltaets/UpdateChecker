@@ -1,3 +1,12 @@
-<div>
-    {{ innerHtml | async }}
+<div class="center">
+    <label>URL</label>
+    <input [(ngModel)]="url" type="text" class="ml lg"/>
+    <label class="ml">Interval</label>
+    <input [(ngModel)]="time" type="number" class="ml sm" min="1"/>
+    <button (click)="start()" class="ml">Watch</button>
 </div>
+<div *ngIf="error" class="error">{{error}}</div>
+<div [innerHTML]="innerHtml | async" class="center mt"></div>
+<audio #notification>
+    <source src="assets/notification.mp3" type="audio/mpeg" />
+</audio>
